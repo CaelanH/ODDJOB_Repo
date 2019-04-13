@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1053944443690",
+    "firebase_url": "https://oddjobrepo.firebaseio.com",
+    "project_id": "oddjobrepo",
+    "storage_bucket": "oddjobrepo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053944443690:android:68e58d99d14e1930",
+        "android_client_info": {
+          "package_name": "com.example.oddjob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053944443690-gc2oqn2cmlrqp8usqrpkpmnd4sifp0bf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oddjob",
+            "certificate_hash": "ae8b3e63e13e7c39043c04c240d80555d98aa00c"
+          }
+        },
+        {
+          "client_id": "1053944443690-ilmnvjsuf9etd8vja9tv2cbi6075rda9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPAGYImD4wi386xoo1RUo-lkSBpY1uC9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053944443690-ilmnvjsuf9etd8vja9tv2cbi6075rda9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
