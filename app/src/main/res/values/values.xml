@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">20167666480-os5imbueg2bm5gj70eg3m7bog0mgshh9.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://oddjob-19b2f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">20167666480</string>
+    <string name="google_api_key" translatable="false">AIzaSyBaaBW82aIcpOrD5UWH_5lQQF0tpk43nUQ</string>
+    <string name="google_app_id" translatable="false">1:20167666480:android:68e58d99d14e1930</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBaaBW82aIcpOrD5UWH_5lQQF0tpk43nUQ</string>
+    <string name="google_storage_bucket" translatable="false">oddjob-19b2f.appspot.com</string>
+    <string name="project_id" translatable="false">oddjob-19b2f</string>
+</resources>
