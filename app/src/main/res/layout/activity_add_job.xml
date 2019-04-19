@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddJobActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text=" Job Title:"
+            android:textSize="30dp"
+            android:layout_gravity="left"/>
+
+        <EditText
+            android:id="@+id/jobTitle"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="232dp" />
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text=" Job Description:"
+            android:textSize="30dp"
+            android:layout_gravity="left"/>
+
+        <EditText
+            android:id="@+id/jobDescription"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="232dp" />
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text=" Job Location:"
+            android:textSize="30dp"
+            android:layout_gravity="left"/>
+
+        <EditText
+            android:id="@+id/jobLocation"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="232dp" />
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text=" Job Time:"
+            android:textSize="30dp"
+            android:layout_gravity="left"/>
+
+        <EditText
+            android:id="@+id/jobTime"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text|datetime"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="232dp" />
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:text="Submit"
+            android:textSize="35dp"/>
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -57,7 +57,6 @@
             android:layout_width="100dp"
             android:layout_height="30dp" />
 
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
