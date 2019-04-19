@@ -18,6 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".WelcomeActivity">
+        </activity>
+
+        <activity
+            android:name=".TermsActivity">
+        </activity>
+
+        <activity
+            android:name=".LoginActivity">
+        </activity>
+
     </application>
 
 </manifest>

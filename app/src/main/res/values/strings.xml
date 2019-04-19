@@ -25,4 +25,5 @@
     <string name="school">Western Canada High School</string>
     <string name="neighbourhood">Garrison</string>
     <string name="bio">Hi, I\'m from WCHS and I\'m looking for work near me. I can babysit and stuff so that\'s pretty cool. I\'m not sure what to write here, but since this a place holder that\'s okay</string>
+    <string name="button">Button</string>
 </resources>

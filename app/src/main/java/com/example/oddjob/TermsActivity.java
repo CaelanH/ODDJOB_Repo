@@ -13,7 +13,7 @@ public class TermsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Button mAcceptButton;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_terms);
         mAcceptButton = findViewById(R.id.accept_button);
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
