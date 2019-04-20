@@ -18,7 +18,7 @@ public class TermsActivity extends AppCompatActivity {
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TermsActivity.this, LoginActivity.class);
+                Intent i = new Intent(TermsActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });

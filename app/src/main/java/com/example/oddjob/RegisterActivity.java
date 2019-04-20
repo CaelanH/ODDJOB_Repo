@@ -14,12 +14,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.support.annotation.NonNull;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity{
     private EditText mFirstName, mLastName, mPhone, mEmail, mAddress, mAddressLine2, mPostal, mPassword;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = mDatabase.getReference("users");
     private Button mAcceptButton;
     private static final String TAG = "RegisterActivity";
 
@@ -27,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mAcceptButton = findViewById(R.id.login_button);
+        mAcceptButton = findViewById(R.id.register_button);
         mFirstName = findViewById(R.id.first_name);
         mLastName = findViewById(R.id.last_name);
         mPhone = findViewById(R.id.phone);
@@ -39,32 +44,41 @@ public class RegisterActivity extends AppCompatActivity{
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeToDatabase(mFirstName, mLastName,mPhone, mEmail, mAddress, mAddressLine2, mPostal, mPassword);
+                createAccount(mEmail.getText().toString(), mPassword.getText().toString());
             }
         });
+        mAuth = FirebaseAuth.getInstance();
     }
-    private void writeToDatabase(EditText mFirstName, EditText mLastName, EditText mPhone, EditText mEmail, EditText mAddress, EditText mAddressLine2, EditText mPostal, EditText mPassword){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    private void createAccount(String mEmail, String mPassword){
+        mAuth.createUserWithEmailAndPassword(mEmail, mPassword)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String userID = user.getUid();
+                            writeToDatabase(userID);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        // ...
+                    }
+                });
     }
-//    public void createAccount(){
-//        mAuth = FirebaseAuth.getInstance();
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Log.d(TAG, "createUserWithEmail:success");
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            updateUI(user);
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-//                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
-//                        }
-//                    }
-//                });
-//    }
+    public void writeToDatabase(String userID){
+        HashMap<String,String> user = new HashMap<String, String>();
+        user.put("userID", userID);
+        user.put("FirstName", mFirstName.getText().toString());
+        user.put("LastName", mLastName.getText().toString());
+        user.put("Phone", mPhone.getText().toString());
+        user.put("Address",mAddress.getText().toString()+" " +mAddressLine2.getText().toString());
+        user.put("Postal",mPostal.getText().toString());
+        myRef.push().setValue(user);
+    }
 }

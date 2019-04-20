@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/first_name"
+            android:hint="@string/first_name"
             />
         <EditText
             android:id="@+id/last_name"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/last_name"/>
+            android:hint="@string/last_name"/>
         //Phone
         <EditText
             android:id="@+id/phone"
@@ -32,21 +32,21 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/phone"/>
+            android:hint="@string/phone"/>
         <EditText
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="@string/email"/>
+            android:hint="@string/email"/>
         <EditText
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/address"/>
+            android:hint="@string/address"/>
         //Address Line 2
         <EditText
             android:id="@+id/addressln2"
@@ -54,21 +54,27 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/address_line2"/>
+            android:hint="@string/address_line2"/>
         <EditText
             android:id="@+id/postal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/postal"/>
+            android:hint="@string/postal"/>
+
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType=""
-            android:text="@string/password"/>
+            android:hint="@string/password"/>
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Register"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

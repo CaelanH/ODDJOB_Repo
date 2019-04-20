@@ -1,5 +1,6 @@
 package com.example.oddjob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
@@ -32,44 +33,16 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mEditTextUsername = findViewById(R.id.username_login);
         mEditTextPassword = findViewById(R.id.password_login);
-        /*
-        mEditTextUsername.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-        });
-
-        mEditTextPassword.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-        });*/
         mLoginButton = findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn(mEditTextUsername.getText().toString(), mEditTextPassword.getText().toString());
-                //signIn("caelan.hennig@gmail.com", "Teddy464");
             }
         });
-
-    }
-    private void writeToDatabase(EditText mEditTextUsername, EditText mEditTextPassword){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    }
-    private void readFromDatabase(){
-
     }
     @Override
     public void onStart() {
-
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -82,15 +55,15 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Authentication success.",
-                                    Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(i);
+                            //Toast.makeText(LoginActivity.this, "Authentication success.",
+                                    //Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
 //                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
 //                                    Toast.LENGTH_SHORT).show();
-
                         }
-
                         // ...
                     }
                 });
