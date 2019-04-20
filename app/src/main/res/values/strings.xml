@@ -8,4 +8,15 @@
     <string name="title_search">Search</string>
     <string name="google_maps_key">AIzaSyCF85KsLylcsfo6wFiMNhE1ewZjImmU0h0 </string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_search_jobs">SearchJobsActivity</string>
+    <string name="scrolling_text">hello</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="jobCategoryPrompt">Select a Category: </string>
+
+    <string-array name="jobTypes">
+        <item>Yardwork</item>
+        <item>Housework</item>
+    </string-array>
 </resources>

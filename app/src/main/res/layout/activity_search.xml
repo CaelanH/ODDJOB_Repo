@@ -13,14 +13,6 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp">
 
-        <SearchView
-            android:layout_width="300dp"
-            android:layout_height="66dp" />
-
-        <Space
-            android:layout_width="100dp"
-            android:layout_height="20dp" />
-
         <Button
             android:id="@+id/location_button"
             android:layout_width="300dp"
