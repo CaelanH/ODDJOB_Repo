@@ -16,7 +16,7 @@
         android:layout_width="139dp"
         android:layout_height="wrap_content"
         android:hint="Edit Profile Image" />
-    <EditText
+    <TextView
         android:id="@+id/Username_Profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +45,6 @@
         android:id="@+id/submit_button"
         android:layout_width="139dp"
         android:layout_height="wrap_content"
-        android:text="SUBMIT" />
+        android:text="SAVE" />
 
 </LinearLayout>

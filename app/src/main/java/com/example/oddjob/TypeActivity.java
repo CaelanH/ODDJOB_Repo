@@ -9,7 +9,6 @@ import android.widget.Button;
 import java.util.HashMap;
 
 public class TypeActivity extends AppCompatActivity {
-    private String userID;
     private Button mStudentButton;
     private Button mNeighbourButton;
     HashMap<String,String> user2 = new HashMap<>();
@@ -25,6 +24,8 @@ public class TypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user2.put("Type", "Student");
+                sEditProfileActivity editprofileactivity = new sEditProfileActivity();
+                editprofileactivity.setHash(user2);
                 Intent i = new Intent(TypeActivity.this, sEditProfileActivity.class);
                 startActivity(i);
             }
