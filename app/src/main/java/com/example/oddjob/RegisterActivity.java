@@ -1,5 +1,6 @@
 package com.example.oddjob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -61,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity{
                             FirebaseUser user = mAuth.getCurrentUser();
                             String userID = user.getUid();
                             writeToDatabase(userID);
+                            Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
+                            startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -80,5 +83,9 @@ public class RegisterActivity extends AppCompatActivity{
         user.put("Address",mAddress.getText().toString()+" " +mAddressLine2.getText().toString());
         user.put("Postal",mPostal.getText().toString());
         myRef.push().setValue(user);
+        TypeActivity typeActivity = new TypeActivity();
+        typeActivity.setHash(user);
+        Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
+        startActivity(i);
     }
 }

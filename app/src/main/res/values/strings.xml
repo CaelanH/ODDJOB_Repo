@@ -22,10 +22,10 @@
     <string name="student">Student</string>
     <string name="neighbour">Neighbour</string>
     //Profile
-    <string name="name">Bob Henniger</string>
-    <string name="school">Western Canada High School</string>
+    <string name="name">Name</string>
+    <string name="school">School</string>
     <string name="neighbourhood">Garrison</string>
-    <string name="bio">Hi, I\'m from WCHS and I\'m looking for work near me. I can babysit and stuff so that\'s pretty cool. I\'m not sure what to write here, but since this a place holder that\'s okay</string>
+    <string name="bio">Write a little bit about yourself here!</string>
     <string name="button">Button</string>
     <string name="title_add">Add Job</string>
     <string name="title_profile">Profile</string>
