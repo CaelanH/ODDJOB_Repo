@@ -34,18 +34,18 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        mDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SearchJobsDate.class);
-                startActivity(i);
-            }
-        });
+//        mDate.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), SearchJobsDate.class);
+//                startActivity(i);
+//            }
+//        });
 
-        mJob.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SearchJobsActivity.class);
-                startActivity(i);
-            }
-        });
+//        mJob.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), SearchJobsActivity.class);
+//                startActivity(i);
+//            }
+//        });
     }
 }

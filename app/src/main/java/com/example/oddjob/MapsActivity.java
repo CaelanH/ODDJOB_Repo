@@ -1,9 +1,12 @@
 package com.example.oddjob;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -37,6 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LatLng Calgary = new LatLng(51, -114);
     private String jobTitle;
     private String pay;
+    private int MY_LOCATION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         geocoder = new Geocoder(this.getApplicationContext());
+
+
     }
 
     /**
@@ -65,10 +71,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+            boolean x = false;
+            // Show rationale and request permission.
+        }
+
         // display code from firebase on jobs
         readLocationFromDatabase();
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Calgary, 10));
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == MY_LOCATION_REQUEST_CODE) {
+            if (permissions.length == 1 &&
+                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                mMap.setMyLocationEnabled(true);
+            } else {
+                // Permission was denied. Display an error message.
+            }
+        }
     }
 
     public void getCoordinatesFromAddress(String location) {

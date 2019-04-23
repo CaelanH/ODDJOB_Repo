@@ -1,4 +1,8 @@
 package com.example.oddjob;
 
-public class ProfileActivity {
+import android.support.v7.app.AppCompatActivity;
+
+public class ProfileActivity extends AppCompatActivity {
+
+
 }

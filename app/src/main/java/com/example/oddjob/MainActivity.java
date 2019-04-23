@@ -3,69 +3,29 @@ package com.example.oddjob;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-//import com.google.android.gms.maps.CameraUpdateFactory;
-//import com.google.android.gms.maps.GoogleMap;
-//import com.google.android.gms.maps.MapFragment;
-//import com.google.android.gms.maps.SupportMapFragment;
-//import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-//import com.google.android.gms.maps.model.LatLng;
-//import com.google.android.gms.maps.model.Marker;
-//import com.google.android.gms.maps.model.MarkerOptions;
-
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.ValueEventListener;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    // private TextView mTextMessage;
-    // BlankFragment mFragment;
-    // FrameworksFragment frameworksFragment;
-    // FrameLayout content;
-    // android.support.v4.app.FragmentManager fragmentManager;
-//
-//    static final LatLng HAMBURG = new LatLng(53.558, 9.927);
-//    static final LatLng KIEL = new LatLng(53.551, 9.993);
-//    private GoogleMap map;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-//
-//        //map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-//
-//        Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG).title("Hamburg"));
-//        Marker kiel = map.addMarker(new MarkerOptions()
-//                .position(KIEL)
-//                .title("LAWNMOWING")
-//                .snippet("$PRICE")
-//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_foreground)));
-//
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(HAMBURG, 15));
-//        map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-//    }
-//}
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference jobRef = database.getReference().child("jobs");
+    private DatabaseReference userRef = database.getReference().child("users");
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
+    private String string;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,11 +35,15 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_messages:
                     // mTextMessage.setText(R.string.title_messages);
+
+                    Intent h = new Intent(getApplicationContext(), MessageActivity.class);
+                    startActivity(h);
+
                     return true;
                 case R.id.navigation_search:
                     // mTextMessage.setText(R.string.title_search);
 
-                    Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+                    Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                     startActivity(i);
 
                     return true;
@@ -93,10 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     // mTextMessage.setText(R.string.title_home);
 
+                    Intent k = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(k);
+
                     return true;
                 case R.id.navigation_profile:
-                    // writeToDatabase();
                     // mTextMessage.setText(R.string.title_profile);
+
+                    Intent l = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(l);
 
                     return true;
             }
@@ -113,9 +82,58 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+//        mAuth = FirebaseAuth.getInstance();
+//        user = mAuth.getCurrentUser();
+//        DatabaseReference myUser = userRef.child(user.getUid());
+//        boolean x = true;
+//        String mType = user.getType();
+
+//        userRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String type = dataSnapshot.child("Type").getValue(String.class);
+//
+//                if( type == "Neighbour" ) {
+//
+//                }
+//                else {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//            }
+//        });
+
+
+
 //        ViewPager viewPager = findViewById(R.id.viewPager);
 //        ViewPagerAdapter viewPagerAdapter = new viewPagerAdapter(getSupportFragmentManager());
+    }
 
+    private void getUserType() {
+        // Read from the database
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    String userId = ds.child("User ID").getValue(String.class);
+                    /// Log.d(TAG, "Value is: " + userId);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
     }
 
