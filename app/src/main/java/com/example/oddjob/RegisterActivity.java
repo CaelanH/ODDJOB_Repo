@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity{
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity{
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
     private Button mAcceptButton;
+    private User user;
     private static final String TAG = "RegisterActivity";
 
     @Override
@@ -61,10 +63,18 @@ public class RegisterActivity extends AppCompatActivity{
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            String userID = user.getUid();
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            String userID = firebaseUser.getUid();
                             writeToDatabase(userID);
                             Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
+
+
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("user", user); // Put the user model object in the intent "extras"
+                            bundle.putString("userID", userID);
+
+                            i.putExtras(bundle);
+
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -77,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity{
                 });
     }
     public void writeToDatabase(String userID){
-        User user = new User();
+        user = new User();
         user.setFirstName(mFirstName.getText().toString());
         user.setLastName(mLastName.getText().toString());
         user.setPhone(mPhone.getText().toString());
@@ -86,7 +96,5 @@ public class RegisterActivity extends AppCompatActivity{
         user.setAddressLn2(mAddressLine2.getText().toString());
         user.setPostal(mPostal.getText().toString());
         myRef.child(userID).setValue(user);
-        Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
-        startActivity(i);
     }
 }

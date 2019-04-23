@@ -20,25 +20,28 @@ public class TypeActivity extends AppCompatActivity {
     private Button mNeighbourButton;
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
+    private Bundle extras;
     private User user;
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
         mStudentButton = findViewById(R.id.student_button);
+
+        extras = getIntent().getExtras();
+
+        userID = extras.getString("userID");
+        user = (User) extras.getSerializable("user"); // Retrieve the user model object we set in RegisterActivity.java
+
         mStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth  mAuth = FirebaseAuth.getInstance();
-                FirebaseUser currentUser = mAuth.getCurrentUser();
-                DatabaseReference myUser = myRef.child(currentUser.getUid());
-
-                user = new User(myUser);
                 user.setType("Student");
-                myUser.setValue(user);
 
-                myUser.setValue(user);
+                myRef.child(userID).setValue(user);
 
+                // TODO: Pass the user model to sEditProfileActivity
                 Intent i = new Intent(TypeActivity.this, sEditProfileActivity.class);
                 startActivity(i);
             }
@@ -47,7 +50,7 @@ public class TypeActivity extends AppCompatActivity {
         mNeighbourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setType("Neighbour");
+//                user.setType("NeighbFour");
 //                myRef.child(userID).setValue(user);
                 Intent i = new Intent(TypeActivity.this, nEditProfileActivity.class);
                 startActivity(i);

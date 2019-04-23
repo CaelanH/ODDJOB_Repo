@@ -7,9 +7,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Node;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class User {
+public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String Phone;
@@ -27,10 +28,6 @@ public class User {
     private String Job;
 
     public User() {}
-    public User(DatabaseReference ref){
-        Age = ref.child("Age").toString();
-    }
-
 
     public String getFirstName() {
         return firstName;
