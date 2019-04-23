@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.oddjob.Model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,12 +42,10 @@ public class nEditProfileActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user2.put("School", mNeighbourhood.getText().toString());
-                user2.put("Grade", mJob.getText().toString());
-                user2.put("Age", mAge.getText().toString());
-                user2.put("Bio", mBio.getText().toString());
-                sEditProfileActivity editprofileactivity = new sEditProfileActivity();
-                editprofileactivity.setHash(user2);
+//                user.setNeighbourhood(mNeighbourhood.getText().toString());
+//                user.setJob(mJob.getText().toString());
+//                user.setAge(mAge.getText().toString());
+//                user.setBio(mBio.getText().toString());
                 Intent i = new Intent(nEditProfileActivity.this, AddJobActivity.class);
                 startActivity(i);
             }

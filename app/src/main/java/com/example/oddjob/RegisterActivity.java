@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.oddjob.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity{
@@ -27,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity{
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
     private Button mAcceptButton;
+    private User user;
     private static final String TAG = "RegisterActivity";
 
     @Override
@@ -59,10 +63,18 @@ public class RegisterActivity extends AppCompatActivity{
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            String userID = user.getUid();
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            String userID = firebaseUser.getUid();
                             writeToDatabase(userID);
                             Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
+
+
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("user", user); // Put the user model object in the intent "extras"
+                            bundle.putString("userID", userID);
+
+                            i.putExtras(bundle);
+
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -75,17 +87,14 @@ public class RegisterActivity extends AppCompatActivity{
                 });
     }
     public void writeToDatabase(String userID){
-        HashMap<String,String> user = new HashMap<String, String>();
-        user.put("userID", userID);
-        user.put("FirstName", mFirstName.getText().toString());
-        user.put("LastName", mLastName.getText().toString());
-        user.put("Phone", mPhone.getText().toString());
-        user.put("Address",mAddress.getText().toString()+" " +mAddressLine2.getText().toString());
-        user.put("Postal",mPostal.getText().toString());
-        myRef.push().setValue(user);
-        TypeActivity typeActivity = new TypeActivity();
-        typeActivity.setHash(user);
-        Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
-        startActivity(i);
+        user = new User();
+        user.setFirstName(mFirstName.getText().toString());
+        user.setLastName(mLastName.getText().toString());
+        user.setPhone(mPhone.getText().toString());
+        user.setEmail(mEmail.getText().toString());
+        user.setAddress(mAddress.getText().toString());
+        user.setAddressLn2(mAddressLine2.getText().toString());
+        user.setPostal(mPostal.getText().toString());
+        myRef.child(userID).setValue(user);
     }
 }
