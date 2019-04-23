@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MessageActivity extends AppCompatActivity {
-    CircleImageView profile_image;
+   /* CircleImageView profile_image;
     TextView username;
     FirebaseUser fuser;
     DatabaseReference reference;
@@ -59,5 +59,5 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }

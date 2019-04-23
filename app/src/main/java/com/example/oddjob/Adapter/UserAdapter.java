@@ -17,8 +17,9 @@ import com.example.oddjob.R;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-    private Context mContext;
+public class UserAdapter //extends RecyclerView.Adapter<UserAdapter.ViewHolder>
+         {
+   /* private Context mContext;
     private List<User> mUsers;
     public UserAdapter(Context mContext,List<User> mUsers){
         this.mUsers = mUsers;
@@ -60,5 +61,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             username = itemView.findViewById(R.id.username);
             profile_image = itemView.findViewById(R.id.profile_image);
         }
-    }
+    }*/
 }
