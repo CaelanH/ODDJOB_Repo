@@ -41,8 +41,12 @@ public class TypeActivity extends AppCompatActivity {
 
                 myRef.child(userID).setValue(user);
 
-                // TODO: Pass the user model to sEditProfileActivity
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user); // Put the user model object in the intent "extras"
+                bundle.putString("userID", userID);
+
                 Intent i = new Intent(TypeActivity.this, sEditProfileActivity.class);
+                i.putExtras(bundle);
                 startActivity(i);
             }
         });

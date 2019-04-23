@@ -37,9 +37,10 @@ public class sEditProfileActivity extends AppCompatActivity {
         mAge = findViewById(R.id.Age_Profile);
         mBio = findViewById(R.id.Bio_Profile);
         extras = getIntent().getExtras();
+
         userID = extras.getString("userID");
         user = (User) extras.getSerializable("user");
-        myRef.child(userID).setValue(user);
+
         mEditProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,10 +51,14 @@ public class sEditProfileActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // SET IT IN USER MODEL
                 user.setSchool(mSchool.getText().toString());
                 user.setGrade(mGrade.getText().toString());
                 user.setAge(mAge.getText().toString());
                 user.setBio(mBio.getText().toString());
+                // WRITE TO DATABASE
+                myRef.child(userID).setValue(user);
+
                 Intent i = new Intent(sEditProfileActivity.this, MainActivity.class);
                 startActivity(i);
             }
