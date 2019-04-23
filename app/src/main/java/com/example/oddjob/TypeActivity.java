@@ -54,9 +54,15 @@ public class TypeActivity extends AppCompatActivity {
         mNeighbourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                user.setType("NeighbFour");
-//                myRef.child(userID).setValue(user);
+                user.setType("Neighbour");
+                myRef.child(userID).setValue(user);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user); // Put the user model object in the intent "extras"
+                bundle.putString("userID", userID);
+
                 Intent i = new Intent(TypeActivity.this, nEditProfileActivity.class);
+                i.putExtras(bundle);
                 startActivity(i);
             }
         });
