@@ -1,13 +1,17 @@
 package com.example.oddjob;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdate;
@@ -42,10 +46,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String pay;
     private int MY_LOCATION_REQUEST_CODE = 1;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_messages:
+                    // mTextMessage.setText(R.string.title_messages);
+
+                    Intent h = new Intent(getApplicationContext(), MessageActivity.class);
+                    startActivity(h);
+
+                    return true;
+                case R.id.navigation_search:
+                    // mTextMessage.setText(R.string.title_search);
+
+                    Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+                    startActivity(i);
+
+                    return true;
+                case R.id.navigation_add:
+                    // mTextMessage.setText(R.string.title_add);
+
+                    Intent j = new Intent(getApplicationContext(), AddJobActivity.class);
+                    startActivity(j);
+
+                    return true;
+                case R.id.navigation_home:
+                    // mTextMessage.setText(R.string.title_home);
+
+                    Intent k = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(k);
+
+                    return true;
+                case R.id.navigation_profile:
+                    // mTextMessage.setText(R.string.title_profile);
+
+                    Intent l = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(l);
+
+                    return true;
+            }
+            return false;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+        navigation.setSelectedItemId(R.id.navigation_search);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
