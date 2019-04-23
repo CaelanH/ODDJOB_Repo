@@ -30,7 +30,7 @@ public class TypeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        mNeighbourButton = findViewById(R.id.register_button);
+        mNeighbourButton = findViewById(R.id.neighbour_button);
         mNeighbourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
