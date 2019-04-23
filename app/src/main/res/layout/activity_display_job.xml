@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayJobActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+
+
+                <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left"
+                android:text=" Job Title:"
+                android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="75dp"
+                    android:layout_gravity="right"
+                    android:text="insert "
+                    android:textSize="30dp"/>
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:text=" Job Description:"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="75dp"
+                    android:layout_gravity="right"
+                    android:text="insert "
+                    android:textSize="30dp"/>
+
+                <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left"
+                android:text=" Job Location:"
+                android:textSize="30dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="75dp"
+                    android:layout_gravity="right"
+                    android:text="insert "
+                    android:textSize="30dp"/>
+
+
+                <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left"
+                android:text=" Job Date:"
+                android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="75dp"
+                    android:layout_gravity="right"
+                    android:text="insert job date here"
+                    android:textSize="30dp"/>
+
+
+                // HERE ON MUST FIX LIST
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/jobTime"
+                            android:layout_width="288dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:hint="Job Time"
+                            android:inputType="time"
+                            android:textColor="@color/darkestBlue"
+                            android:textSize="20dp" />
+
+                        <Spinner
+                            android:id="@+id/timeSpinner"
+                            android:layout_width="119dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right|top"
+                            android:prompt="@string/timeSpinnerPrompt"
+                            android:entries="@array/timeSpinnerArray" />
+                    </GridLayout>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="What will you pay?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:inputType="numberDecimal"
+                        android:id="@+id/price"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Any requirements/qualifications?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/requirements"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Anything else you want students to know?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/additionalInformation"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="300dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:text="Submit"
+                    android:textSize="35dp" />
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+                />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

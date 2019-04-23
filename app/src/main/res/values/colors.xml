@@ -5,5 +5,10 @@
     <color name="DarkBlue">#1261A0</color>
     <color name="colorPrimary">#58CCED</color>
     <color name="colorPrimaryDark">#1261A0</color>
-    <color name="colorAccent">#435610</color>
+    <color name="colorAccent">#1261A0</color>
+
+    <color name="darkestBlue">#072F5F</color>
+    <color name="darkBlue">#1261A0</color>
+    <color name="mediumBlue">#3895D3</color>
+    <color name="lightBlue">#58CCED</color>
 </resources>

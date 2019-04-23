@@ -39,9 +39,31 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
     <string name="jobCategoryPrompt">Select a Category: </string>
+    <string name="timeSpinnerPrompt">Select AM/PM</string>
+
+    <string-array name="fragmentList">
+        <item>y</item>
+        <item>o</item>
+        <item>u</item>
+    </string-array>
 
     <string-array name="jobTypes">
+        <item>No Category Selected</item>
         <item>Yardwork</item>
-        <item>Housework</item>
+        <item>Indoor Cleaning</item>
+        <item>Outdoor Cleaning</item>
+        <item>Tutoring</item>
+        <item>Pet Care</item>
+        <item>Child Care</item>
+        <item>Other</item>
     </string-array>
+
+    <string-array name="timeSpinnerArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

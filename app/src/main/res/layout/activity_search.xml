@@ -26,11 +26,11 @@
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/time_button"
+            android:id="@+id/date_button"
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:text="Time"
+            android:text="Date"
             android:textSize="35dp"/>
 
         <Space
