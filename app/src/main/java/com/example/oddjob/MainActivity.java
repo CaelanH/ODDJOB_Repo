@@ -7,6 +7,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -81,6 +84,22 @@ public class MainActivity extends AppCompatActivity {
         // mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        Button mHired = findViewById(R.id.hired_button);
+        Button mCompleted = findViewById(R.id.completed_button);
+
+        mHired.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "You have no jobs on the Hired list.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mCompleted.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "You have no jobs on the Completed list.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        mAuth = FirebaseAuth.getInstance();
 //        user = mAuth.getCurrentUser();

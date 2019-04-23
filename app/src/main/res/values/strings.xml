@@ -48,7 +48,7 @@
     </string-array>
 
     <string-array name="jobTypes">
-        <item>No Category Selected</item>
+        <item>Select a Job Category</item>
         <item>Yardwork</item>
         <item>Indoor Cleaning</item>
         <item>Outdoor Cleaning</item>

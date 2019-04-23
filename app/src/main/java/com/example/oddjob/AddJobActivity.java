@@ -189,13 +189,14 @@ public class AddJobActivity extends AppCompatActivity {
         Map<String, int[]> map2 = new HashMap<String, int[]>();
         map2.put("applicants", mApplicants);
 
-        // TODO does this work?? or replace value??
         jobRef.push().setValue(map);
         // jobRef.push().setValue(map1);
         // jobRef.push().setValue(map2);
 
-        Toast.makeText(AddJobActivity.this, "Push Successful", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AddJobActivity.this, "Job Posted!", Toast.LENGTH_SHORT).show();
 
+        Intent m = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(m);
     }
 
     /*

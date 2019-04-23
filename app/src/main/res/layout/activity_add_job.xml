@@ -23,6 +23,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!--<Space-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:layout_height="34dp" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:text="POST A JOB"-->
+                    <!--android:textSize="40dp"/>-->
+
                 <Space
                     android:layout_width="100dp"
                     android:layout_height="34dp" />
@@ -114,9 +125,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="Select a Job Category:"
+                    android:text="No Category Selected"
                     android:textSize="20dp"
-                    android:textColor="@color/darkestBlue"/>
+                    android:textColor="@color/darkestBlue" />
 
                 <Space
                     android:layout_width="100dp"
@@ -210,22 +221,56 @@
                     android:layout_width="100dp"
                     android:layout_height="30dp" />
 
-                <android.support.design.widget.TextInputLayout
+                <!--<android.support.design.widget.TextInputLayout-->
 
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<android.support.design.widget.TextInputEditText-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:hint="What will you pay?"-->
+                        <!--android:textSize="20dp"-->
+                        <!--android:textColor="@color/darkestBlue"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:id="@+id/price"-->
+                        <!--android:layout_gravity="center|left"/>-->
+                <!--</android.support.design.widget.TextInputLayout>-->
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <android.support.design.widget.TextInputEditText
+                    <GridLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
-                        android:hint="What will you pay?"
-                        android:textSize="20dp"
-                        android:textColor="@color/darkestBlue"
-                        android:inputType="numberDecimal"
-                        android:id="@+id/price"
-                        android:layout_gravity="center|left"/>
+                        android:layout_marginLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/dollarSign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:text="$"
+                            android:textColor="@color/darkestBlue"
+                            android:textSize="20dp" />
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:hint="What will you pay?"
+                            android:textSize="20dp"
+                            android:textColor="@color/darkestBlue"
+                            android:inputType="numberDecimal"
+                            android:id="@+id/price"
+                            android:layout_gravity="center|left"/>
+                    </GridLayout>
+
                 </android.support.design.widget.TextInputLayout>
 
                 <Space

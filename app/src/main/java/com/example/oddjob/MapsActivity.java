@@ -41,7 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference jobRef = database.getReference().child("jobs");
     private Geocoder geocoder;
-    private LatLng Calgary = new LatLng(51, -114);
+    private LatLng Calgary = new LatLng(51.04522, -114.06302);
     private String jobTitle;
     private String pay;
     private int MY_LOCATION_REQUEST_CODE = 1;
@@ -108,8 +108,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         geocoder = new Geocoder(this.getApplicationContext());
-
-
     }
 
     /**
@@ -130,14 +128,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         } else {
-            boolean x = false;
             // Show rationale and request permission.
         }
 
         // display code from firebase on jobs
         readLocationFromDatabase();
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Calgary, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Calgary, 11));
     }
 
 
@@ -150,6 +147,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                mMap.setMyLocationEnabled(true);
             } else {
                 // Permission was denied. Display an error message.
+
+
             }
         }
     }
