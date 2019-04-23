@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import com.example.oddjob.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +20,9 @@ public class sEditProfileActivity extends AppCompatActivity {
     private EditText mName, mSchool, mGrade, mAge,mBio;
     private Button mEditProfileButton;
     private Button mSubmit;
+    private Bundle extras;
+    private String userID;
+    private User user;
 //    User user = new User();
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
@@ -32,6 +36,10 @@ public class sEditProfileActivity extends AppCompatActivity {
         mGrade = findViewById(R.id.Grade_Profile);
         mAge = findViewById(R.id.Age_Profile);
         mBio = findViewById(R.id.Bio_Profile);
+        extras = getIntent().getExtras();
+        userID = extras.getString("userID");
+        user = (User) extras.getSerializable("user");
+        myRef.child(userID).setValue(user);
         mEditProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,11 +50,11 @@ public class sEditProfileActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                user.setSchool(mSchool.getText().toString());
-//                user.setGrade(mGrade.getText().toString());
-//                user.setAge(mAge.getText().toString());
-//                user.setBio(mBio.getText().toString());
-                Intent i = new Intent(sEditProfileActivity.this, SearchActivity.class);
+                user.setSchool(mSchool.getText().toString());
+                user.setGrade(mGrade.getText().toString());
+                user.setAge(mAge.getText().toString());
+                user.setBio(mBio.getText().toString());
+                Intent i = new Intent(sEditProfileActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
