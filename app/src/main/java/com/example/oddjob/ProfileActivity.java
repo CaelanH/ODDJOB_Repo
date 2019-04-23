@@ -1,8 +1,11 @@
 package com.example.oddjob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.oddjob.Model.User;
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Ref;
+
 public class ProfileActivity extends AppCompatActivity {
     public TextView name;
     public TextView schoolNeighbourhood;
@@ -22,8 +27,10 @@ public class ProfileActivity extends AppCompatActivity {
     public TextView bio;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference jobRef = database.getReference().child("jobs");
+    private DatabaseReference userRef = database.getReference().child("users");
     public User user;
+    private Button mEditButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +41,26 @@ public class ProfileActivity extends AppCompatActivity {
         age = findViewById(R.id.Age);
         bio = findViewById(R.id.Bio);
         ReadFromDatabase();
-
+        mEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(user!=null)
+                {
+                    if(user.getType() == "Student"){
+                        Intent i = new Intent(ProfileActivity.this, sEditProfileActivity.class);
+                        startActivity(i);
+                    }
+                    else
+                    {
+                        Intent i = new Intent(ProfileActivity.this, nEditProfileActivity.class);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
     }
     public void ReadFromDatabase(){
-        jobRef.addValueEventListener(new ValueEventListener() {
+        userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mAuth = FirebaseAuth.getInstance();

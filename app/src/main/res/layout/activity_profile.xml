@@ -47,10 +47,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/bio"/>
         <Button
-            android:id="@+id/submit_button"
+            android:id="@+id/editprofile_button"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
-            android:text="SAVE" />
+            android:text="EDIT" />
 
     </LinearLayout>
 
