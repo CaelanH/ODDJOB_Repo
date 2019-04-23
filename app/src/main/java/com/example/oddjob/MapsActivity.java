@@ -6,11 +6,15 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +32,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private String TAG="MapsActivity";
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference().child("jobs");
+    private DatabaseReference jobRef = database.getReference().child("jobs");
     private Geocoder geocoder;
+    private LatLng Calgary = new LatLng(51, -114);
+    private String jobTitle;
+    private String pay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         geocoder = new Geocoder(this.getApplicationContext());
-        readLocationFromDatabase();
     }
 
     /**
@@ -54,44 +60,77 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // display code from firebase on jobs
+        readLocationFromDatabase();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Calgary, 10));
     }
 
     public void getCoordinatesFromAddress(String location) {
         try {
             List<Address> addresses= geocoder.getFromLocationName(location, 1);
-            Address myAddressLocation = addresses.get(0);
-            myAddressLocation.getLatitude();
+            Address jobAddress = addresses.get(0);
+            jobAddress.getLatitude();
 
-            LatLng christChurch = new LatLng(myAddressLocation.getLatitude(), myAddressLocation.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(christChurch).title("Marker in Calgary"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(christChurch));
+            LatLng jobLocation = new LatLng(jobAddress.getLatitude(), jobAddress.getLongitude());
+//            mLocation = jobLocation;
 
+            // markJobLocation(jobLocation);
+
+            mMap.addMarker(new MarkerOptions().position(jobLocation).title(jobTitle).snippet(pay));
+
+            // mMap.moveCamera(CameraUpdateFactory.newLatLng(jobLocation));
+
+//            float zoomLevel = 16.0f; //This goes up to 21
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(jobLocation, zoomLevel));
 
         } catch (IOException e) {
 
         }
     }
 
+//    public void markJobLocation(final LatLng jobLocation) {
+//        jobRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                // this method is called once with the initial value and again
+//                // whenever data at this location is updated
+//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    String jobTitle = ds.child("job title").getValue(String.class);
+//                    Log.d(TAG, "Value is: " + jobTitle);
+//
+//                    // adds marker with title "lawnmowing" to location at which lawnmowing is at TODO I THINK!!!
+//                    mMap.addMarker(new MarkerOptions().position(jobLocation).title(jobTitle));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) { // inconsistency
+//                Log.w(TAG, "Failed to read value.", databaseError.toException());
+//            }
+//        });
+//    }
 
     private void readLocationFromDatabase() {
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+        jobRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    String location = ds.child("location").getValue(String.class);
-                    Log.d(TAG, "Value is: " + location);
-                    getCoordinatesFromAddress(location);
+                    String location = ds.child("Location").getValue(String.class);
+                    jobTitle = ds.child("Title").getValue(String.class);
+                    pay = "$" + ds.child("Pay").getValue(String.class);
+
+                    if(location != null) {
+                        getCoordinatesFromAddress(location);
+                    }
                 }
             }
 

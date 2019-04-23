@@ -27,7 +27,7 @@ public class sEditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_student_edit_profile);
         mEditProfileButton = findViewById(R.id.edit_button);
         mSchool = findViewById(R.id.School_Profile);
         mGrade = findViewById(R.id.Grade_Profile);

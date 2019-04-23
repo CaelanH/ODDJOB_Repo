@@ -14,10 +14,6 @@
         tools:layout_editor_absoluteX="151dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <Space
-            android:layout_width="100dp"
-            android:layout_height="30dp" />
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,6 +23,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="34dp" />
+
                 <android.support.design.widget.TextInputLayout
 
                     android:layout_width="match_parent"
@@ -35,82 +35,244 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Job Title" />
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Job Title"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/jobTitle" />
                 </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/jobTitle"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    tools:layout_editor_absoluteX="15dp"
-                    tools:layout_editor_absoluteY="232dp" />
-
                 <Space
                     android:layout_width="100dp"
                     android:layout_height="30dp" />
 
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:text=" Job Description:"
-                    android:textSize="30dp" />
+                <android.support.design.widget.TextInputLayout
 
-                <EditText
-                    android:id="@+id/jobDescription"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    tools:layout_editor_absoluteX="15dp"
-                    tools:layout_editor_absoluteY="232dp" />
-
-                <Space
-                    android:layout_width="100dp"
-                    android:layout_height="30dp" />
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:text=" Job Location:"
-                    android:textSize="30dp" />
-
-                <EditText
-                    android:id="@+id/jobLocation"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:ems="10"
-                    android:inputType="textPostalAddress"
-                    tools:layout_editor_absoluteX="15dp"
-                    tools:layout_editor_absoluteY="232dp" />
-
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:text=" Job Date:"
-                    android:textSize="30dp" />
-
-                <DatePicker
-                    android:id="@+id/datePicker"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Job Description"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/jobDescription"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<TextView-->
+                    <!--android:layout_width="250dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_gravity="left"-->
+                    <!--android:text=" Job Description:"-->
+                    <!--android:textSize="30dp" />-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/jobDescription"-->
+                    <!--android:layout_width="300dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="text"-->
+                    <!--tools:layout_editor_absoluteX="15dp"-->
+                    <!--tools:layout_editor_absoluteY="232dp" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="250dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_gravity="left"-->
+                    <!--android:text=" Job Location:"-->
+                    <!--android:textSize="30dp" />-->
+                <!---->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/jobLocation"-->
+                    <!--android:layout_width="300dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="textPostalAddress"-->
+                    <!--tools:layout_editor_absoluteX="15dp"-->
+                    <!--tools:layout_editor_absoluteY="232dp" />-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="250dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_gravity="left"-->
+                    <!--android:text=" Job Date:"-->
+                    <!--android:textSize="30dp" />-->
 
                 <Space
                     android:layout_width="100dp"
                     android:layout_height="30dp" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Select a Job Category:"
+                    android:textSize="20dp"
+                    android:textColor="@color/darkestBlue"/>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="15dp" />
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="57dp"
+                    android:layout_height="75dp"
                     android:entries="@array/jobTypes"
                     android:prompt="@string/jobCategoryPrompt" />
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Job Location"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/jobLocation"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="Select a Job Date:"
+                    android:textColor="@color/darkestBlue"
+                    android:textSize="20dp"/>
+
+                <DatePicker
+                    android:id="@+id/datePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:yearListSelectorColor="@color/mediumBlue"
+                    android:outlineSpotShadowColor="@color/darkBlue"
+                    android:outlineAmbientShadowColor="@color/lightBlue"/>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="15dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/jobTime"
+                            android:layout_width="288dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:hint="Job Time"
+                            android:inputType="time"
+                            android:textColor="@color/darkestBlue"
+                            android:textSize="20dp" />
+
+                        <Spinner
+                            android:id="@+id/timeSpinner"
+                            android:layout_width="119dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right|top"
+                            android:prompt="@string/timeSpinnerPrompt"
+                            android:entries="@array/timeSpinnerArray" />
+                    </GridLayout>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="What will you pay?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:inputType="numberDecimal"
+                        android:id="@+id/price"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Any requirements/qualifications?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/requirements"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Anything else you want students to know?"
+                        android:textSize="20dp"
+                        android:textColor="@color/darkestBlue"
+                        android:id="@+id/additionalInformation"
+                        android:layout_gravity="center|left"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="30dp" />
 
                 <Button
                     android:id="@+id/submitButton"
@@ -124,10 +286,22 @@
                     android:layout_width="100dp"
                     android:layout_height="30dp" />
                 />
+
             </LinearLayout>
+
         </ScrollView>
 
-
     </LinearLayout>
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+        <!--android:id="@+id/navigation"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="73dp"-->
+        <!--android:background="?android:attr/windowBackground"-->
+        <!--android:scrollbarStyle="insideInset"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:menu="@menu/navigation" />-->
 
 </android.support.constraint.ConstraintLayout>
