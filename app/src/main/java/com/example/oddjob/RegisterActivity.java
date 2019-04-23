@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.oddjob.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -75,16 +77,15 @@ public class RegisterActivity extends AppCompatActivity{
                 });
     }
     public void writeToDatabase(String userID){
-        HashMap<String,String> user = new HashMap<String, String>();
-        user.put("userID", userID);
-        user.put("FirstName", mFirstName.getText().toString());
-        user.put("LastName", mLastName.getText().toString());
-        user.put("Phone", mPhone.getText().toString());
-        user.put("Address",mAddress.getText().toString()+" " +mAddressLine2.getText().toString());
-        user.put("Postal",mPostal.getText().toString());
-        myRef.push().setValue(user);
-        TypeActivity typeActivity = new TypeActivity();
-        typeActivity.setHash(user);
+        User user = new User();
+        user.setFirstName(mFirstName.getText().toString());
+        user.setLastName(mLastName.getText().toString());
+        user.setPhone(mPhone.getText().toString());
+        user.setEmail(mEmail.getText().toString());
+        user.setAddress(mAddress.getText().toString());
+        user.setAddressLn2(mAddressLine2.getText().toString());
+        user.setPostal(mPostal.getText().toString());
+        myRef.child(userID).setValue(user);
         Intent i = new Intent(RegisterActivity.this, TypeActivity.class);
         startActivity(i);
     }

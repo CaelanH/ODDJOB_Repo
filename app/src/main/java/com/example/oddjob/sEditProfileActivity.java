@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.oddjob.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,12 +19,10 @@ public class sEditProfileActivity extends AppCompatActivity {
     private EditText mName, mSchool, mGrade, mAge,mBio;
     private Button mEditProfileButton;
     private Button mSubmit;
-    HashMap<String,String> user2 = new HashMap<>();
+//    User user = new User();
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
-    public void setHash(HashMap<String,String> user){
-        user2 = user;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +42,10 @@ public class sEditProfileActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user2.put("School", mSchool.getText().toString());
-                user2.put("Grade", mGrade.getText().toString());
-                user2.put("Age", mAge.getText().toString());
-                user2.put("Bio", mBio.getText().toString());
-                sEditProfileActivity editprofileactivity = new sEditProfileActivity();
-                editprofileactivity.setHash(user2);
+//                user.setSchool(mSchool.getText().toString());
+//                user.setGrade(mGrade.getText().toString());
+//                user.setAge(mAge.getText().toString());
+//                user.setBio(mBio.getText().toString());
                 Intent i = new Intent(sEditProfileActivity.this, SearchActivity.class);
                 startActivity(i);
             }

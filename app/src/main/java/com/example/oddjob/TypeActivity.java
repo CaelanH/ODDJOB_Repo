@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.example.oddjob.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -17,10 +20,7 @@ public class TypeActivity extends AppCompatActivity {
     private Button mNeighbourButton;
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference myRef = mDatabase.getReference("users");
-    HashMap<String,String> user2 = new HashMap<>();
-    public void setHash(HashMap<String,String> user){
-        user2 = user;
-    }
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +29,16 @@ public class TypeActivity extends AppCompatActivity {
         mStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user2.put("Type", "Student");
-                myRef.push().setValue(user2);
-                sEditProfileActivity editprofileactivity = new sEditProfileActivity();
-                editprofileactivity.setHash(user2);
+                FirebaseAuth  mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                DatabaseReference myUser = myRef.child(currentUser.getUid());
+
+                user = new User(myUser);
+                user.setType("Student");
+                myUser.setValue(user);
+
+                myUser.setValue(user);
+
                 Intent i = new Intent(TypeActivity.this, sEditProfileActivity.class);
                 startActivity(i);
             }
@@ -41,8 +47,8 @@ public class TypeActivity extends AppCompatActivity {
         mNeighbourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user2.put("Type", "Neighbour");
-                myRef.push().setValue(user2);
+                user.setType("Neighbour");
+//                myRef.child(userID).setValue(user);
                 Intent i = new Intent(TypeActivity.this, nEditProfileActivity.class);
                 startActivity(i);
             }
