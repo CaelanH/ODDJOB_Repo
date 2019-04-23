@@ -6,11 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 
 public class TypeActivity extends AppCompatActivity {
     private Button mStudentButton;
     private Button mNeighbourButton;
+    private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = mDatabase.getReference("users");
     HashMap<String,String> user2 = new HashMap<>();
     public void setHash(HashMap<String,String> user){
         user2 = user;
@@ -24,6 +30,7 @@ public class TypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user2.put("Type", "Student");
+                myRef.push().setValue(user2);
                 sEditProfileActivity editprofileactivity = new sEditProfileActivity();
                 editprofileactivity.setHash(user2);
                 Intent i = new Intent(TypeActivity.this, sEditProfileActivity.class);
@@ -35,6 +42,7 @@ public class TypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user2.put("Type", "Neighbour");
+                myRef.push().setValue(user2);
                 Intent i = new Intent(TypeActivity.this, nEditProfileActivity.class);
                 startActivity(i);
             }
