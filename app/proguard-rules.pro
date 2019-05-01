@@ -27,3 +27,4 @@
 -keepclassmembers class com.example.oddjob.Model.** {
   *;
 }
+-keep class androidx.core.app.CoreComponentFactory { *; }
